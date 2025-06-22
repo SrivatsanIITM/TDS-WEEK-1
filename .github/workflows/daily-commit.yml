@@ -1,30 +1,26 @@
 # File: .github/workflows/daily-commit.yml
-name: 23f2000296@ds.study.iitm.ac.in
+name: Daily Commit Workflow
 
 on:
   schedule:
-    # Runs daily at 02:30 UTC (adjust time if needed)
-    - cron: '30 2 * * *'
+    - cron: '30 2 * * *'  # daily at 02:30 UTC, change if needed
+  workflow_dispatch:       # manual trigger enabled
 
 jobs:
   commit_job:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-      - name: Commit changes by 23f2000296@ds.study.iitm.ac.in
-      run: |
-    echo "Update: $(date)" >> daily_commit.txt
-        git config user.name "github-actions[bot]"
-        git config user.email "github-actions[bot]@users.noreply.github.com"
-        git add daily_commit.txt
-    
-        # Only commit if there are changes
-        if git diff --cached --quiet; then
-          echo "No changes to commit"
-        else
-          git commit -m "Daily update by 23f2000296@ds.study.iitm.ac.in"
-          git push
-        fi
-
+      - name: 23f2000296@ds.study.iitm.ac.in
+        run: |
+          echo "Update: $(date)" >> daily_commit.txt
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add daily_commit.txt
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Daily update by 23f2000296@ds.study.iitm.ac.in"
+            git push
+          fi
