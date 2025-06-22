@@ -2,17 +2,17 @@ name: Daily Commit
 
 on:
   schedule:
-    - cron: '15 6 * * *'  # Runs daily at 6:15 AM UTC (adjust if needed)
-  workflow_dispatch:  # Optional: allows manual trigger
+    - cron: '30 5 * * *'  # daily at 5:30 UTC
+  workflow_dispatch:
 
 jobs:
   commit-job:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repo
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Add commit by 23f2000296@ds.study.iitm.ac.in
+      - name: 23f2000296@ds.study.iitm.ac.in  # ✅ EXACT email, nothing else
         run: |
           echo "GitHub Action ran at $(date)" >> daily-log.txt
           git config user.name "github-actions[bot]"
