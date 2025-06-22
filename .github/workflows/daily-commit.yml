@@ -13,11 +13,18 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: 23f2000296@ds.study.iitm.ac.in
-        run: |
-          echo "Update: $(date)" >> daily_commit.txt
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add daily_commit.txt
+      - name: Commit changes by 23f2000296@ds.study.iitm.ac.in
+      run: |
+    echo "Update: $(date)" >> daily_commit.txt
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+        git add daily_commit.txt
+    
+        # Only commit if there are changes
+        if git diff --cached --quiet; then
+          echo "No changes to commit"
+        else
           git commit -m "Daily update by 23f2000296@ds.study.iitm.ac.in"
           git push
+        fi
+
