@@ -1,22 +1,23 @@
-name: Daily Commit
+# File: .github/workflows/daily-commit.yml
+name: 23f2000296@ds.study.iitm.ac.in
 
 on:
   schedule:
-    - cron: '30 5 * * *'  # daily at 5:30 UTC
-  workflow_dispatch:
+    # Runs daily at 02:30 UTC (adjust time if needed)
+    - cron: '30 2 * * *'
 
 jobs:
-  commit-job:
+  commit_job:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: 23f2000296@ds.study.iitm.ac.in  # ✅ EXACT email, nothing else
+      - name: 23f2000296@ds.study.iitm.ac.in
         run: |
-          echo "GitHub Action ran at $(date)" >> daily-log.txt
+          echo "Update: $(date)" >> daily_commit.txt
           git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add daily-log.txt
-          git commit -m "Daily commit on $(date)"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add daily_commit.txt
+          git commit -m "Daily update by 23f2000296@ds.study.iitm.ac.in"
           git push
